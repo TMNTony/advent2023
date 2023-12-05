@@ -2,9 +2,7 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Day3Part2 {
@@ -33,108 +31,69 @@ public class Day3Part2 {
     private int validParts() {
         int total = 0;
 
-        for (String line : list) {
-            int asterisk = 0;
+        for (int lineNumber = 0; lineNumber < list.size(); lineNumber++) {
+            String line = list.get(lineNumber);
 
             for (int j = 0; j < line.length(); j++) {
                 char ch = line.charAt(j);
                 String regex = ".*\\*.*";
 
-                if (regex.matches(String.valueOf(ch))) {
-                    asterisk = j;
-                    total += checkForNums(asterisk);
+                if (String.valueOf(ch).matches(regex)) {
+                    total += checkForNums(j, lineNumber);
                 }
             }
         }
         return total;
     }
 
-    private int checkForNums(int asterisk){
-         List<Integer> nums = new ArrayList<>();
-         int total = 0;
+    private int checkForNums(int asterisk, int lineNum) {
+        Set<Integer> nums = new HashSet<>();
+        String regex = "-?\\d+(\\.\\d+)?";
+        int total = 0;
 
+        // Define directions: [row, column]
+        int[][] directions = {
+                {-1, -1}, {-1, 0}, {-1, 1},
+                {0, -1}, {0, 1},
+                {1, -1}, {1, 0}, {1, 1}
+        };
 
+        for (int[] direction : directions) {
+            try {
+                int newRow = lineNum + direction[0];
+                int newCol = asterisk + direction[1];
+                String value = list.get(newRow).charAt(newCol) + "";
 
+                if (value.matches(regex)) {
+                    int fullNumber = getFullNum(newRow, newCol);
+                    nums.add(fullNumber);
+                }
+            } catch (IndexOutOfBoundsException e) {
+                // Handle the exception if needed
+            }
+        }
 
-         if (nums.size() == 2){
-             total = nums.get(0) * nums.get(1);
-         }
+        if (nums.size() == 2) {
+            total = nums.stream().reduce(1, (a, b) -> a * b);
+        }
+        return total;
     }
 
-    private boolean checkForSymbol(int numStart, int numEnd, int lineNum) {
-        String regex = ".*\\*.*";
-        try {
-            String left = list.get(lineNum).charAt(numStart - 1) + "";
+    private int getFullNum(int lineNum, int index) {
+        String line = list.get(lineNum);
 
-            if (left.matches(regex)) {
-                return true;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            //              No error handling needed
-        }
-        try {
-            String right = list.get(lineNum).charAt(numEnd + 1) + "";
+        int left = index;
+        int right = index;
 
-            if (right.matches(regex)) {
-                return true;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            //              No error handling needed
-        }
-        try {
-            String diagUpLeft = list.get(lineNum - 1).charAt(numStart - 1) + "";
-            if (diagUpLeft.matches(regex)) {
-                return true;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            //              No error handling needed
-        }
-        try {
-            String diagUpRight = list.get(lineNum - 1).charAt(numEnd + 1) + "";
-            if (diagUpRight.matches(regex)) {
-                return true;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            //              No error handling needed
-        }
-        try {
-            String diagDownLeft = list.get(lineNum + 1).charAt(numStart - 1) + "";
-            if (diagDownLeft.matches(regex)) {
-                return true;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            //              No error handling needed
-        }
-        try {
-            String diagDownRight = list.get(lineNum + 1).charAt(numEnd + 1) + "";
-            if (diagDownRight.matches(regex)) {
-                return true;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            //              No error handling needed
-        }
-        // Check above and below number
-
-        for (int i = numStart; i < numEnd + 1; i++) {
-            try {
-                String up = list.get(lineNum - 1).charAt(i) + "";
-                if (up.matches(regex)) {
-                    return true;
-                }
-            } catch (IndexOutOfBoundsException e) {
-                //              No error handling needed
-            }
-            try {
-                String down = list.get(lineNum + 1).charAt(i) + "";
-                if (down.matches(regex)) {
-                    return true;
-                }
-            } catch (IndexOutOfBoundsException e) {
-                //              No error handling needed
-            }
+        while (left > 0 && Character.isDigit(line.charAt(left - 1))) {
+            left--;
         }
 
-        return false;
+        while (right < line.length() - 1 && Character.isDigit(line.charAt(right + 1))) {
+            right++;
+        }
+
+        return Integer.parseInt(line.substring(left, right + 1));
     }
 }
 
