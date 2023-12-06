@@ -47,15 +47,15 @@ public class Day3Part2 {
     }
 
     private int checkForNums(int asterisk, int lineNum) {
-        Set<Integer> nums = new HashSet<>();
+        List<Integer> nums = new ArrayList<>();
         String regex = "-?\\d+(\\.\\d+)?";
         int total = 0;
 
         // Define directions: [row, column]
         int[][] directions = {
-                {-1, -1}, {-1, 0}, {-1, 1},
+                {-1, -1}, {-1, 1},
                 {0, -1}, {0, 1},
-                {1, -1}, {1, 0}, {1, 1}
+                {1, -1}, {1, 1}
         };
 
         for (int[] direction : directions) {
