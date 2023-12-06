@@ -8,7 +8,7 @@ import java.util.Map;
 public class Day2 {
 
     public static void main(String[] args) {
-        System.out.println(solution(games));
+        System.out.println(solutionV2(games));
     }
 
     public static Day2Input day2Input = new Day2Input();
@@ -30,33 +30,63 @@ public class Day2 {
     public static int solution(String[] array) {
         int result = 0;
         for (String game : array) {
-            if (isValid(mappedGame(game))) {
+            String[] parts = game.split(":");
+            String[] rounds = parseRound(parts[1]);
+            int validRounds = 0;
+
+            for (String round : rounds) {
+                if (isValid(mappedRound(round))) {
+                    validRounds++;
+                }
+            }
+            if (validRounds == rounds.length) {
                 result += gameNumber(game);
             }
         }
         return result;
     }
 
-    public static Map<String, Integer> mappedGame(String game) {
-        String[] parts = game.split(":");
-        String[] rounds = parseRound(parts[1]);
-        Map<String, Integer> mappedGame = new HashMap<>();
+    public static int solutionV2(String[] array) {
+        int result = 0;
+        for (String game : array) {
+            int power = 1;
+            String[] parts = game.split(":");
+            String[] rounds = parseRound(parts[1]);
+            Map<String, Integer> mappedGame = new HashMap<>(){{
+                put("red", 0);
+                put("blue", 0);
+                put("green", 0);
+            }};
 
-        for (String round : rounds) {
-            String[] colorInfo = round.trim().split(",");
-            for (String part : colorInfo) {
-                String[] countColor = part.trim().split(" ");
-                if (countColor.length == 2) {
-                    String color = countColor[1].toLowerCase();
-                    int count = Integer.parseInt(countColor[0]);
-                    mappedGame.put(color, count);
-                } else {
-                    System.out.println("Parsing Error in " + parts[0]);
+            for (String round : rounds) {
+                Map<String, Integer> mappedRound = mappedRound(round);
+                for (String value : mappedRound.keySet()){
+                    if( mappedRound.get(value) > mappedGame.get(value)){
+                        mappedGame.put(value, mappedRound.get(value));
+                    }
                 }
             }
+            for (String value : mappedGame.keySet()){
+                power = power * mappedGame.get(value);
+            }
+            result = result + power;
         }
+        return result;
+    }
 
-        return mappedGame;
+    public static Map<String, Integer> mappedRound(String round) {
+        Map<String, Integer> mappedRound = new HashMap<>();
+
+        String[] colorInfo = round.trim().split(",");
+        for (String part : colorInfo) {
+            String[] countColor = part.trim().split(" ");
+            if (countColor.length == 2) {
+                String color = countColor[1].toLowerCase();
+                int count = Integer.parseInt(countColor[0]);
+                mappedRound.put(color, count);
+            }
+        }
+        return mappedRound;
     }
 
     public static String[] parseRound(String game) {
