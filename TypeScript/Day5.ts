@@ -11,9 +11,16 @@ class Day5 {
     private run() {
         const input = new Input();
         this.lines = input.getLines(this.url);
+        console.log(this.getScore())
+    }
 
-        for (const line of this.lines) {
-            console.log(line)
-        }
+    private getScore(): number {
+        let total: number = 0;
+
+        total = 5 * 7
+
+
+        return total;
     }
 }
+const app = new Day5();

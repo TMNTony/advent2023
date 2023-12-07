@@ -9,10 +9,13 @@ var Day5 = /** @class */ (function () {
     Day5.prototype.run = function () {
         var input = new Input_1.Input();
         this.lines = input.getLines(this.url);
-        for (var _i = 0, _a = this.lines; _i < _a.length; _i++) {
-            var line = _a[_i];
-            console.log(line);
-        }
+        console.log(this.getScore());
+    };
+    Day5.prototype.getScore = function () {
+        var total = 0;
+        total = 5 * 7;
+        return total;
     };
     return Day5;
 }());
+var app = new Day5();
