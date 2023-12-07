@@ -17,7 +17,7 @@ public class Day3 {
     }
 
     private void run() {
-        File file = new File("input3.txt");
+        File file = new File("inputs/input3.txt");
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
