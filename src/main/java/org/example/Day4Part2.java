@@ -1,52 +1,62 @@
 package org.example;
 
+import Inputs.Input;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Day4 {
-
+public class Day4Part2 {
+    String url = "inputs/input4.txt";
     List<String> lines = new ArrayList<>();
 
     public static void main(String[] args) {
-        Day4 app = new Day4();
+        Day4Part2 app = new Day4Part2();
         app.run();
     }
 
     public void run() {
-        File file = new File("inputs/input4.txt");
+        Input input = new Input();
+        input.getlines(url);
+        int total = matchingNums();
+        System.out.println(total);
 
-        try {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNext()) {
-                lines.add(scanner.nextLine());
-            }
-            int total = matchingNums();
-            System.out.println(total);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private int matchingNums() {
-        int total = 0;
+        Map<Integer, Integer> gameMatches = new LinkedHashMap<>();
+
         for (String line : lines) {
             int cardScore = 0;
             List<Integer> card1 = new ArrayList<>();
             List<Integer> card2 = new ArrayList<>();
 
             parseLine(line, card1, card2);
-
-            for (int scratch : card1){
-                if (card2.contains(scratch)){
-                   cardScore = cardScore == 0 ? 1 : cardScore * 2;
-                }
-            }
-            total += cardScore;
+            cardScore = getCardMatches(card1, card2);
+            gameMatches.put(cardScore, 1);
         }
-        return total;
+
+        return makeCopies(gameMatches);
+    }
+
+    private int makeCopies(Map<Integer, Integer> games) {
+        for (Map.Entry<Integer, Integer> game : games.entrySet()) {
+            int matches = game.getKey();
+            int copies = game.getValue();
+
+        }
+        return 0;
+    }
+
+    private int getCardMatches(List<Integer> card1, List<Integer> card2) {
+        int cardScore = 0;
+        for (int scratch : card1) {
+            if (card2.contains(scratch)) {
+                cardScore++;
+            }
+        }
+
+        return cardScore;
     }
 
     private void parseLine(String inputString, List<Integer> card1, List<Integer> card2) {
@@ -69,7 +79,7 @@ public class Day4 {
             numbersList.add(num);
 
         }
-        if (!(numbersList.size() == 10) && !(numbersList.size() == 25)){
+        if (!(numbersList.size() == 10) && !(numbersList.size() == 25)) {
             System.out.println("parsing error");
         }
 
