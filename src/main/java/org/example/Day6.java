@@ -1,13 +1,13 @@
 package org.example;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import Inputs.Input;
+
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Day6 {
     ArrayList<String> lines = new ArrayList<>();
-
+    String url = "inputs/input6.txt";
 
     public static void main(String[] args) {
         Day6 app = new Day6();
@@ -15,14 +15,12 @@ public class Day6 {
     }
 
     private void run() {
-        File file = new File("input6.txt");
-        try {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNext()) {
-                lines.add(scanner.nextLine());
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        Input input = new Input();
+        lines = input.getlines(url);
+        for (String line : lines){
+            System.out.println(line);
         }
 
+
     }
+}

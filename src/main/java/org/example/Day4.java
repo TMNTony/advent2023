@@ -16,7 +16,7 @@ public class Day4 {
     }
 
     public void run() {
-        File file = new File("input4.txt");
+        File file = new File("inputs/input4.txt");
 
         try {
             Scanner scanner = new Scanner(file);
