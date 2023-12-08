@@ -1,0 +1,15 @@
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/bin/Debug/net8.0/Advent2023
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/bin/Debug/net8.0/Advent2023.deps.json
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/bin/Debug/net8.0/Advent2023.runtimeconfig.json
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/bin/Debug/net8.0/Advent2023.dll
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/bin/Debug/net8.0/Advent2023.pdb
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.AssemblyInfoInputs.cache
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.AssemblyInfo.cs
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.csproj.CoreCompileInputs.cache
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.sourcelink.json
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.dll
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/refint/Advent2023.dll
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.pdb
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/Advent2023.genruntimeconfig.cache
+/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/Debug/net8.0/ref/Advent2023.dll

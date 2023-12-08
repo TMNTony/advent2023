@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/tony/IdeaProjects/Advent of Code/C#/Solution1/Advent of Code/Advent of Code.csproj": {}
+    "/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/Advent2023.csproj": {}
   },
   "projects": {
-    "/Users/tony/IdeaProjects/Advent of Code/C#/Solution1/Advent of Code/Advent of Code.csproj": {
+    "/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/Advent2023.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tony/IdeaProjects/Advent of Code/C#/Solution1/Advent of Code/Advent of Code.csproj",
-        "projectName": "Advent of Code",
-        "projectPath": "/Users/tony/IdeaProjects/Advent of Code/C#/Solution1/Advent of Code/Advent of Code.csproj",
+        "projectUniqueName": "/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/Advent2023.csproj",
+        "projectName": "Advent2023",
+        "projectPath": "/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/Advent2023.csproj",
         "packagesPath": "/Users/tony/.nuget/packages/",
-        "outputPath": "/Users/tony/IdeaProjects/Advent of Code/C#/Solution1/Advent of Code/obj/",
+        "outputPath": "/Users/tony/IdeaProjects/Advent of Code/C#/Advent2023/Advent2023/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/tony/.nuget/NuGet/NuGet.Config"
