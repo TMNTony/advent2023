@@ -14,6 +14,14 @@ var Input = /** @class */ (function () {
             throw new Error(e);
         }
     };
+    Input.prototype.getString = function (url) {
+        try {
+            return fs.readFileSync(url, 'utf-8').trim();
+        }
+        catch (e) {
+            throw new Error(e);
+        }
+    };
     return Input;
 }());
 exports.Input = Input;
